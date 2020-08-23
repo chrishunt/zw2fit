@@ -1,5 +1,9 @@
 # `zw2fit`
 
+Converts workouts from [Zwift](https://zwift.com) `.zwo` to
+[ANT+](https://www.thisisant.com/developer/ant-plus/ant-antplus-defined/)
+binary `.fit`.
+
 ## Installation
 
 ```
