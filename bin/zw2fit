@@ -26,6 +26,7 @@ if options[:ftp].nil? || options[:zwo_path].nil?
   exit 1
 end
 
+puts "Opening #{options[:zwo_path]}" if options[:verbose]
 
 zwo = begin
   File.read(options[:zwo_path])
@@ -42,6 +43,8 @@ out_path = File.join(
 csv_path = "#{out_path}.csv"
 fit_path = "#{out_path}.fit"
 
+puts "Writing CSV to #{csv_path}" if options[:verbose]
+
 File.open(csv_path, 'w') do |f|
   f.write Zw2fit.new(
     zwo: zwo,
@@ -50,6 +53,8 @@ File.open(csv_path, 'w') do |f|
     ftp: options[:ftp]
   )
 end
+
+puts "Converting CSV to FIT, writing to #{fit_path}" if options[:verbose]
 
 system(
   "java -jar #{File.join(File.dirname(__FILE__), 'FitCSVTool.jar')} " \
