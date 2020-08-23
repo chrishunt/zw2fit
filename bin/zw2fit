@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require './zw2fit'
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: zw2fit [options]"
+
+  opts.on("--zwo ZWO_PATH", "Path to workout in ZWO format") do |zwo_path|
+    options[:zwo_path] = zwo_path
+  end
+
+  opts.on("--ftp CURRENT_FTP", Integer, "Current FTP") do |ftp|
+    options[:ftp] = ftp
+  end
+
+  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+    options[:verbose] = v
+  end
+end.parse!
+
+if options[:ftp].nil? || options[:zwo_path].nil?
+  puts "zw2fit: zwo and ftp required. See 'zw2fit --help' for usage."
+  exit 1
+end
+
+
+zwo = begin
+  File.read(options[:zwo_path])
+rescue => e
+  puts "Error opening #{options[:zwo_path]}: #{e.message}"
+  exit 1
+end
+
+out_path = File.join(
+  File.dirname(options[:zwo_path]),
+  File.basename(options[:zwo_path], '.zwo'),
+)
+
+csv_path = "#{out_path}.csv"
+fit_path = "#{out_path}.fit"
+
+File.open(csv_path, 'w') do |f|
+  f.write Zw2fit.new(
+    zwo: zwo,
+    verbose: options[:verbose]
+  ).to_csv(
+    ftp: options[:ftp]
+  )
+end
+
+system(
+  "java -jar #{File.join(File.dirname(__FILE__), 'FitCSVTool.jar')} " \
+  "-c #{csv_path} #{fit_path}"
+)
+
+File.delete(csv_path)

@@ -5,20 +5,24 @@ require './zw2fit/csv'
 class Zw2fit
   class InvalidWorkoutError < StandardError; end
 
-  attr_reader :zwo
-
-  def initialize(zwo:)
+  def initialize(zwo:, verbose: false)
     @zwo = zwo
+    @verbose = verbose
   end
 
   def to_csv(ftp:)
+    puts "Generating CSV for #{workout_name}" if verbose
+
     Csv.new(
       name: workout_name,
-      steps: workout_steps(ftp: ftp)
+      steps: workout_steps(ftp: ftp),
+      verbose: verbose,
     ).to_s
   end
 
   private
+
+  attr_reader :zwo, :verbose
 
   def workout_name
     xml.xpath('//workout_file/name').text.tap do |name|

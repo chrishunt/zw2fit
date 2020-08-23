@@ -17,6 +17,10 @@ class Step
     (ratio * 100).round
   end
 
+  def timestamp
+    "#{(duration / 60.0).to_i}:#{'%02d' % (duration % 60).to_i}"
+  end
+
   def duration
     xml['Duration'].to_f.round(1).tap do |duration|
       raise(InvalidStepError, 'Missing duration') if duration.zero?
