@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<workout_file>
+  <name>Clark</name>
+  <author>TrainerRoad</author>
+  <sportType>bike</sportType>
+  <category>TrainerRoad Workouts</category>
+  <subcategory>C</subcategory>
+  <description>Clark is 6x8-minute efforts between 88-94% FTP directly preceded by a 12-second round of big gear, high-force stomps.
+
+3 minutes of recovery separate intervals. 
+
+Clark's primary goal is to further muscular endurance by improving glycogen storage capacity, lactate tolerance, and the capacity for more intense workouts later on while increasing power output at moderate intensities. 
+
+Additionally, Clark aims to increase force capability - how hard you can push the pedals - while seated as well as standing.
+
+After the initial, high-force, big-watts stomps, you'll settle into a pace well below FTP but one which requires a fair amount of focus to maintain. 
+
+Cadence during the stomps is extremely low at first and could wind up as high as 80rpm assuming your joints can handle it.
+
+Then you'll shift into a manageable gear and ride at 90+rpm for the remainder of each interval. 
+
+</description>
+  <workout>
+    <SteadyState Duration="180" Power="0.5"></SteadyState>
+    <SteadyState Duration="120" Power="0.6"></SteadyState>
+    <SteadyState Duration="120" Power="0.7"></SteadyState>
+    <SteadyState Duration="180" Power="0.9"></SteadyState>
+    <SteadyState Duration="120" Power="0.4"></SteadyState>
+    <SteadyState Duration="12" Power="1.3"></SteadyState>
+    <SteadyState Duration="48" Power="0.4"></SteadyState>
+    <SteadyState Duration="12" Power="1.5"></SteadyState>
+    <SteadyState Duration="48" Power="0.4"></SteadyState>
+    <SteadyState Duration="12" Power="1.8"></SteadyState>
+    <SteadyState Duration="48" Power="0.4"></SteadyState>
+    <SteadyState Duration="12" Power="2.0"></SteadyState>
+    <SteadyState Duration="168" Power="0.4"></SteadyState>
+    <SteadyState Duration="12" Power="2.0"></SteadyState>
+    <SteadyState Duration="468" Power="0.9"></SteadyState>
+    <SteadyState Duration="180" Power="0.4"></SteadyState>
+    <SteadyState Duration="12" Power="2.0"></SteadyState>
+    <SteadyState Duration="468" Power="0.92"></SteadyState>
+    <SteadyState Duration="180" Power="0.4"></SteadyState>
+    <SteadyState Duration="12" Power="2.0"></SteadyState>
+    <SteadyState Duration="468" Power="0.94"></SteadyState>
+    <SteadyState Duration="180" Power="0.4"></SteadyState>
+    <SteadyState Duration="12" Power="2.0"></SteadyState>
+    <SteadyState Duration="468" Power="0.92"></SteadyState>
+    <SteadyState Duration="180" Power="0.4"></SteadyState>
+    <SteadyState Duration="12" Power="2.0"></SteadyState>
+    <SteadyState Duration="468" Power="0.9"></SteadyState>
+    <SteadyState Duration="180" Power="0.4"></SteadyState>
+    <SteadyState Duration="12" Power="2.0"></SteadyState>
+    <SteadyState Duration="468" Power="0.88"></SteadyState>
+    <Ramp Duration="540" PowerLow="0.4" PowerHigh="0.3"></Ramp>
+  </workout>
+</workout_file>

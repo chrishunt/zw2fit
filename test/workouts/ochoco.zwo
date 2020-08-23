@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<workout_file>
+  <name>Ochoco</name>
+  <author>TrainerRoad</author>
+  <sportType>bike</sportType>
+  <category>TrainerRoad Workouts</category>
+  <subcategory>O</subcategory>
+  <description>Ochoco is 2 hours 30 minutes of aerobic Endurance riding spent between 65-75% FTP.
+
+Aerobic Endurance workouts are aimed at improving your aerobic (oxygen-reliant) power producing capabilities in a low-stress manner. By riding for increasingly longer periods of time, your endurance muscle fibers become more efficient at utilizing oxygen and sparing sugar stores for more intense efforts.
+
+</description>
+  <workout>
+    <SteadyState Duration="300" Power="0.5"></SteadyState>
+    <SteadyState Duration="300" Power="0.6"></SteadyState>
+    <SteadyState Duration="900" Power="0.7"></SteadyState>
+    <Ramp Duration="60" PowerLow="0.7" PowerHigh="0.65"></Ramp>
+    <SteadyState Duration="840" Power="0.65"></SteadyState>
+    <Ramp Duration="60" PowerLow="0.65" PowerHigh="0.7"></Ramp>
+    <SteadyState Duration="840" Power="0.7"></SteadyState>
+    <Ramp Duration="60" PowerLow="0.7" PowerHigh="0.75"></Ramp>
+    <SteadyState Duration="840" Power="0.75"></SteadyState>
+    <Ramp Duration="60" PowerLow="0.75" PowerHigh="0.7"></Ramp>
+    <SteadyState Duration="840" Power="0.7"></SteadyState>
+    <Ramp Duration="60" PowerLow="0.7" PowerHigh="0.65"></Ramp>
+    <SteadyState Duration="840" Power="0.65"></SteadyState>
+    <Ramp Duration="60" PowerLow="0.65" PowerHigh="0.7"></Ramp>
+    <SteadyState Duration="840" Power="0.7"></SteadyState>
+    <Ramp Duration="60" PowerLow="0.7" PowerHigh="0.75"></Ramp>
+    <SteadyState Duration="840" Power="0.75"></SteadyState>
+    <Ramp Duration="60" PowerLow="0.75" PowerHigh="0.7"></Ramp>
+    <SteadyState Duration="840" Power="0.7"></SteadyState>
+    <Ramp Duration="300" PowerLow="0.7" PowerHigh="0.5"></Ramp>
+  </workout>
+</workout_file>
