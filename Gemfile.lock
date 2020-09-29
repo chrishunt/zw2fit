@@ -4,6 +4,7 @@ GEM
     coderay (1.1.3)
     method_source (1.0.0)
     mini_portile2 (2.4.0)
+    minitest (5.14.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     pry (0.13.1)
@@ -14,8 +15,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest
   nokogiri
   pry
+
+RUBY VERSION
+   ruby 2.7.1p83
 
 BUNDLED WITH
    2.1.4
