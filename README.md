@@ -12,8 +12,16 @@ $ bundle install
 
 ## Usage
 
+Convert a single workout:
+
 ```
 $ ./bin/zw2fit --zwo workout.zwo --ftp 250
+```
+
+Convert a directory of workouts:
+
+```
+$ ./bin/zw2fit --zwo workouts/ --ftp 250
 ```
 
 ## Testing

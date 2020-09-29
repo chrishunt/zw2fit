@@ -8,7 +8,7 @@ options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: zw2fit [options]"
 
-  opts.on("--zwo ZWO_PATH", "Path to workout in ZWO format") do |zwo_path|
+  opts.on("--zwo ZWO_PATH", "Path to workout(s) in ZWO format") do |zwo_path|
     options[:zwo_path] = zwo_path
   end
 
@@ -26,39 +26,49 @@ if options[:ftp].nil? || options[:zwo_path].nil?
   exit 1
 end
 
-puts "Opening #{options[:zwo_path]}" if options[:verbose]
-
-zwo = begin
-  File.read(options[:zwo_path])
-rescue => e
-  puts "Error opening #{options[:zwo_path]}: #{e.message}"
-  exit 1
+# Load file list from provided zwo_path
+files = if File.directory?(options[:zwo_path])
+  Dir.glob("#{options[:zwo_path]}/*.zwo", File::FNM_CASEFOLD)
+else
+  [options[:zwo_path]]
 end
 
-out_path = File.join(
-  File.dirname(options[:zwo_path]),
-  File.basename(options[:zwo_path], '.zwo'),
-)
+files.each do |path|
+  puts "Opening #{path}" if options[:verbose]
 
-csv_path = "#{out_path}.csv"
-fit_path = "#{out_path}.fit"
+  zwo = begin
+          File.read(path)
+        rescue => e
+          puts "Error opening #{path}: #{e.message}"
+          exit 1
+        end
 
-puts "Writing CSV to #{csv_path}" if options[:verbose]
-
-File.open(csv_path, 'w') do |f|
-  f.write Zw2fit.new(
-    zwo: zwo,
-    verbose: options[:verbose]
-  ).to_csv(
-    ftp: options[:ftp]
+  # Save output in same directory as original file
+  out_path = File.join(
+    File.dirname(path),
+    File.basename(path, '.zwo'),
   )
+
+  csv_path = "#{out_path}.csv"
+  fit_path = "#{out_path}.fit"
+
+  puts "Writing CSV to #{csv_path}" if options[:verbose]
+
+  File.open(csv_path, 'w') do |f|
+    f.write Zw2fit.new(
+      zwo: zwo,
+      verbose: options[:verbose]
+    ).to_csv(
+      ftp: options[:ftp]
+    )
+  end
+
+  puts "Converting CSV to FIT, writing to #{fit_path}" if options[:verbose]
+
+  system(
+    "java -jar #{File.join(File.dirname(__FILE__), 'FitCSVTool.jar')} " \
+    "-c \"#{csv_path}\" \"#{fit_path}\""
+  )
+
+  File.delete(csv_path)
 end
-
-puts "Converting CSV to FIT, writing to #{fit_path}" if options[:verbose]
-
-system(
-  "java -jar #{File.join(File.dirname(__FILE__), 'FitCSVTool.jar')} " \
-  "-c #{csv_path} #{fit_path}"
-)
-
-File.delete(csv_path)
