@@ -6,7 +6,11 @@ binary `.fit`.
 
 ## Installation
 
+From source:
+
 ```
+$ git clone git@github.com:chrishunt/zw2fit.git
+$ cd zw2fit/
 $ bundle install
 ```
 
