@@ -16,6 +16,12 @@ $ bundle install
 $ ./bin/zw2fit --zwo workout.zwo --ftp 250
 ```
 
+## Testing
+
+```
+$ rake
+```
+
 ## Requirements
 
 - Ruby (required for `zw2fit`)
