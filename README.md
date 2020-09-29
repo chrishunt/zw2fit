@@ -16,6 +16,15 @@ $ bundle install
 
 ## Usage
 
+```
+$ ./bin/zw2fit --help
+
+Usage: zw2fit [options]
+        --zwo ZWO_PATH     Path to workout(s) in ZWO format
+        --ftp CURRENT_FTP  Current FTP
+    -v, --[no-]verbose     Run verbosely
+```
+
 Convert a single workout:
 
 ```
